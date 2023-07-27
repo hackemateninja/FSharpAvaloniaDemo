@@ -1,0 +1,52 @@
+<UserControl 
+	xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:vm="clr-namespace:AvaDemo.ViewModels"
+	xmlns:controls="clr-namespace:AvaDemo.Controls"
+	xmlns:views="clr-namespace:AvaDemo.Views"
+  mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+  x:Class="AvaDemo.Views.MainView"
+  x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.fs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+	<!--Main Grid-->
+	<Grid 
+		RowDefinitions="Auto Auto * Auto">
+		<!--Menu row 0-->
+		<Menu
+			Grid.Row="0" 
+			Background="Coral">
+			<MenuItem 
+				Header="Pages" 
+				Foreground="Azure">
+				<MenuItem Header="Products" />
+				<MenuItem Header="Clients" />
+			</MenuItem>
+		</Menu>
+
+
+		<controls:HeaderControl Grid.Row="1"/>
+
+    <views:CustomersView Grid.Row="2" />
+
+		
+		<!--footer brand row 3-->
+		<StackPanel 
+			Grid.Row="3"
+			Background="Coral">
+			<TextBlock
+				Foreground="Azure"
+				FontSize="16"
+				FontWeight="Bold"
+				Margin="0 5"
+				Text="Bushido Labs LLC"
+				TextAlignment="Center"
+			/>
+		</StackPanel>
+	</Grid>
+</UserControl>

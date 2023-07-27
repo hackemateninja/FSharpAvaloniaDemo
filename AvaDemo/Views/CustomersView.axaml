@@ -1,0 +1,56 @@
+<UserControl 
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+  x:Class="AvaDemo.Views.CustomersView">
+  <Grid ColumnDefinitions="Auto * Auto">
+		<Grid
+			x:Name="ListClientsGrid"
+			Grid.Column="0"
+			ColumnDefinitions="* * *"
+			RowDefinitions="Auto *"
+			Margin="10"
+			Background="Gainsboro">
+			<Button
+				Grid.Row="0"
+				Grid.Column="0"
+				Margin="10 10 5 0"
+				Content="Add client"/>
+			<Button
+				Grid.Row="0"
+				Grid.Column="1"
+				Margin="0 10 0 0"
+				Content="Delete client"/>
+			<Button
+				Grid.Row="0"
+				Grid.Column="2"
+				Margin="5 10 10 0"
+				Content="Move Panel"
+				Click="MovePanelClick"/>
+			<ListBox
+				Grid.Row="1"
+				Grid.Column="0"
+				Grid.ColumnSpan="3"
+				Margin="10">
+				<ListBoxItem Content="Herman Morales"/>
+				<ListBoxItem Content="Manuel Morales"/>
+				<ListBoxItem Content="Baduel Morales"/>
+			</ListBox>
+		</Grid>
+    <Border
+			Grid.Column="1"
+			Margin="10"
+			Padding="10"
+			Background="Gainsboro">
+      <StackPanel>
+        <Label Content="Name: "/>
+        <TextBox />
+        <Label Content="Lastname: "/>
+        <TextBox />
+        <CheckBox Content="Is new?"/>
+      </StackPanel>
+    </Border>
+	</Grid>
+</UserControl>
