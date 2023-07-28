@@ -12,9 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Model\Customer.fs" />
+    <Compile Include="Services\CustomerService.fs" />
     <Compile Include="Controls\HeaderControl.axaml.fs" />
     <Compile Include="ViewModels\ViewModelBase.fs" />
     <Compile Include="ViewModels\MainViewModel.fs" />
+    <Compile Include="ViewModels\CustomersViewModel.fs" />
     <Compile Include="Views\CustomersView.axaml.fs" />
     <Compile Include="Views\MainWindow.axaml.fs" />
     <Compile Include="Views\MainView.axaml.fs" />

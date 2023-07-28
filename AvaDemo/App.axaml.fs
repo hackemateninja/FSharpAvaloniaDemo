@@ -1,5 +1,6 @@
 namespace AvaDemo
 
+open System
 open Avalonia
 open Avalonia.Controls.ApplicationLifetimes
 open Avalonia.Markup.Xaml

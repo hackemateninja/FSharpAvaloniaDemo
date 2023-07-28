@@ -1,6 +1,6 @@
 ﻿namespace AvaDemo.ViewModels
 
-type MainViewModel() =
+type MainViewModel() as x =
   inherit ViewModelBase()
 
-  member this.Greeting = "Welcome to Avalonia!"
+  member x.Greeting = "Welcome to Avalonia!"
