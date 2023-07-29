@@ -32,8 +32,8 @@
 
 		<controls:HeaderControl Grid.Row="1"/>
 
-    <views:CustomersView Grid.Row="2" />
 
+    <views:CustomersView Grid.Row="2" />
 		
 		<!--footer brand row 3-->
 		<StackPanel 

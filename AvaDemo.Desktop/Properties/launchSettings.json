@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AvaDemo.Desktop": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

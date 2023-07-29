@@ -1,5 +1,7 @@
 # AvaDemo
 
+WIP 🏗️️🚧👷🏽
+
 this is a simple AvaloniaUI XPlatform demo that shows how F# works, 
 adding MVVM pattern, Navigation, and supabase support for saving data.
 

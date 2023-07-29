@@ -1,7 +1,6 @@
 open System.Runtime.Versioning
 open Avalonia
 open Avalonia.Browser
-open Avalonia.ReactiveUI
 
 open AvaDemo
 
@@ -19,7 +18,6 @@ module Program =
         task {
             do! (buildAvaloniaApp()
             .WithInterFont()
-            .UseReactiveUI()
             .StartBrowserAppAsync("out"))
         }
         |> ignore

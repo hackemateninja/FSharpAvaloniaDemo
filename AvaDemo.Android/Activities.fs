@@ -3,7 +3,6 @@ namespace AvaDemo.Android
 open Android.App
 open Android.Content.PM
 open Avalonia
-open Avalonia.ReactiveUI
 open Avalonia.Android
 open AvaDemo
 
@@ -19,4 +18,3 @@ type MainActivity() =
   override _.CustomizeAppBuilder(builder) =
     base.CustomizeAppBuilder(builder)
       .WithInterFont()
-      .UseReactiveUI()

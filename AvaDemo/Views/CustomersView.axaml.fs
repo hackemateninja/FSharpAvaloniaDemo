@@ -1,18 +1,16 @@
 namespace AvaDemo.Views
 
 open System
-open Avalonia
+open AvaDemo.ViewModels
 open Avalonia.Controls
 open Avalonia.Markup.Xaml
 open Avalonia.Interactivity
-open Avalonia.Diagnostics
+
 
 type CustomersView () as x = 
   inherit UserControl ()
 
-  do
-    x.InitializeComponent()
-    Console.WriteLine "Hello from view"
+  do x.InitializeComponent()
 
   member private x.InitializeComponent() =
     AvaloniaXamlLoader.Load(x)
@@ -23,3 +21,7 @@ type CustomersView () as x =
     let column = Grid.GetColumn(listGrid)
     let newCol = if column = 0 then 2 else 0
     Grid.SetColumn(listGrid, newCol)
+    
+  member x.AddClientClick(sender: obj)(args: RoutedEventArgs) =
+    let vm =  x.DataContext :?> CustomersViewModel
+    vm.AddCustomer()

@@ -1,7 +1,6 @@
 namespace AvaDemo.Desktop
 open System
 open Avalonia
-open Avalonia.ReactiveUI
 open AvaDemo
 
 module Program =
@@ -13,7 +12,6 @@ module Program =
             .UsePlatformDetect()
             .WithInterFont()
             .LogToTrace(areas = Array.empty)
-            .UseReactiveUI()
 
     [<EntryPoint; STAThread>]
     let main argv =
