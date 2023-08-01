@@ -8,9 +8,11 @@ module CustomerService =
       do! Async.Sleep 500
       
       return [
-        { Id = "1"; FirstName = "John"; LastName = "Doe"; IsNew = true }
-        { Id = "2"; FirstName = "Jane"; LastName = "Smith"; IsNew = false }
-        { Id = "3"; FirstName = "Michael"; LastName = "Johnson"; IsNew = true }
+        Customer("1", "John", "Doe", true)
+        Customer("2", "HErman", "Doe", false)
+        Customer("3", "Orlando", "Doe", true)
+        Customer("4", "Manuel", "Doe", false)
+        Customer("5", "Baduel", "Doe", true)
       ]
     }
     

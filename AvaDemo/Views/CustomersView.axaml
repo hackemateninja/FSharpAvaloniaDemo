@@ -12,8 +12,7 @@
 	</UserControl.DataContext>
   <Grid ColumnDefinitions="Auto * Auto">
 		<Grid
-			x:Name="ListClientsGrid"
-			Grid.Column="0"
+			Grid.Column="{Binding ColumnNumber}"
 			ColumnDefinitions="* * *"
 			RowDefinitions="Auto *"
 			Margin="10"
@@ -28,13 +27,14 @@
 				Grid.Row="0"
 				Grid.Column="1"
 				Margin="0 10 0 0"
+				Command="{Binding DeleteCustomer}"
 				Content="Delete client"/>
 			<Button
 				Grid.Row="0"
 				Grid.Column="2"
 				Margin="5 10 10 0"
 				Content="Move Panel"
-				Click="MovePanelClick"/>
+				Command="{Binding MovePanel}"/>
 			<ListBox
 				ItemsSource="{Binding Customers}"
 				SelectedItem="{Binding SelectedCustomer}"
@@ -51,10 +51,17 @@
 			Background="Gainsboro">
       <StackPanel>
         <Label Content="Name: "/>
-        <TextBox Text="{Binding SelectedCustomer.FirstName}"/>
+        <TextBox
+	        Text="{Binding SelectedCustomer.FirstName}"
+        />
         <Label Content="Lastname: "/>
-        <TextBox Text="{Binding SelectedCustomer.LastName}"/>
-        <CheckBox Content="Is New?" IsChecked="{Binding SelectedCustomer.IsNew}" />
+        <TextBox 
+	        Text="{Binding SelectedCustomer.LastName}"
+	      />
+        <CheckBox 
+	        Content="Is New?" 
+	        IsChecked="{Binding SelectedCustomer.IsNew}" 
+	      />
       </StackPanel>
     </Border>
 	</Grid>
