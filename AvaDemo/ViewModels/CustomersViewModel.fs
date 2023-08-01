@@ -51,6 +51,7 @@ type CustomersViewModel() =
 
   member x.DeleteCustomer() =
     x.Customers <- x.Customers|>List.filter(fun x-> x <> selectedCustomer)
+   
 
   member x.MovePanel() =
     if x.ColumnNumber = 0 then x.ColumnNumber <- 2 else x.ColumnNumber <- 0
