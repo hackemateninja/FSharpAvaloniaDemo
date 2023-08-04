@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Command\DelegateCommand.fs" />
     <Compile Include="Model\Customer.fs" />
     <Compile Include="Services\CustomerService.fs" />
     <Compile Include="Controls\HeaderControl.axaml.fs" />

@@ -7,11 +7,9 @@
   xmlns:vm="clr-namespace:AvaDemo.ViewModels"
   x:Class="AvaDemo.Views.CustomersView"
   x:DataType="vm:CustomersViewModel">
-  <UserControl.DataContext>
-		<vm:CustomersViewModel />
-	</UserControl.DataContext>
-  <Grid ColumnDefinitions="Auto * Auto">
+	<Grid ColumnDefinitions="Auto * Auto">
 		<Grid
+			x:Name="ListClientsGrid"
 			Grid.Column="{Binding ColumnNumber}"
 			ColumnDefinitions="* * *"
 			RowDefinitions="Auto *"
@@ -20,21 +18,21 @@
 			<Button
 				Grid.Row="0"
 				Grid.Column="0"
-				Command="{Binding AddCustomer}"
 				Margin="10 10 5 0"
+				Command="{Binding AddCommand}"
 				Content="Add client"/>
 			<Button
 				Grid.Row="0"
 				Grid.Column="1"
 				Margin="0 10 0 0"
-				Command="{Binding DeleteCustomer}"
+				Command="{Binding DeleteCommand}"
 				Content="Delete client"/>
 			<Button
 				Grid.Row="0"
 				Grid.Column="2"
 				Margin="5 10 10 0"
-				Content="Move Panel"
-				Command="{Binding MovePanel}"/>
+				Command="{Binding MovePanelCommand}"
+				Content="Move Panel"/>
 			<ListBox
 				ItemsSource="{Binding Customers}"
 				SelectedItem="{Binding SelectedCustomer}"
