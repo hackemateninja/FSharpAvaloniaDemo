@@ -10,7 +10,7 @@
     ColumnDefinitions="* Auto Auto *"
     RowDefinitions="* *"
     Background="{StaticResource ContainerBackgroundBrush}"
-    Margin="10">
+    Margin="10 10 10 0">
     <Image
       Grid.Row="0"
       Grid.Column="1"

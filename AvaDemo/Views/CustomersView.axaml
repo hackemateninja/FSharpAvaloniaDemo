@@ -7,6 +7,23 @@
   xmlns:vm="clr-namespace:AvaDemo.ViewModels"
   x:Class="AvaDemo.Views.CustomersView"
   x:DataType="vm:CustomersViewModel">
+  <UserControl.Resources>
+    <DataTemplate x:Key="CustomerItemTemplate" DataType="vm:CustomerItemViewModel">
+      <StackPanel Orientation="Horizontal">
+        <TextBlock
+          VerticalAlignment="Center"
+          Foreground="{StaticResource HeaderTitleForegroundBrush}"
+          Text="{Binding FirstName}"
+          FontWeight="Bold"/>
+        <TextBlock
+          VerticalAlignment="Center"
+          Foreground="{StaticResource HeaderSubtitleForegroundBrush}"
+          Text="{Binding LastName}"
+          Margin="5 0"/>
+        <Image Source="/Assets/github.png" Width="20" IsVisible="{Binding IsNew}"/>
+      </StackPanel>
+    </DataTemplate>
+	</UserControl.Resources>
 	<Grid ColumnDefinitions="Auto * Auto">
 		<Grid
 			x:Name="ListClientsGrid"
@@ -41,30 +58,24 @@
 				Grid.Column="0"
 				Grid.ColumnSpan="3"
 				Width="290"
-				Margin="10">
-				<ListBox.ItemTemplate>
-					<DataTemplate>
-						<StackPanel Orientation="Horizontal">
-							<TextBlock 
-								VerticalAlignment="Center"
-								Foreground="{StaticResource HeaderTitleForegroundBrush}" 
-								Text="{Binding FirstName}" 
-								FontWeight="Bold"
-							/>
-							<TextBlock
-								VerticalAlignment="Center"
-								Foreground="{StaticResource HeaderSubtitleForegroundBrush}"
-								Text="{Binding LastName}"
-								Margin="5 0"
-							/>
-							<Image Source="/Assets/github.png" Width="20" IsVisible="{Binding IsNew}"/>
-						</StackPanel>
-					</DataTemplate>
-				</ListBox.ItemTemplate>
-			</ListBox>
+				ItemTemplate="{StaticResource CustomerItemTemplate}"
+				Margin="10"/>
 		</Grid>
-    <Border
+		<StackPanel
+			IsVisible="{Binding !IsVisibleDetails}"
 			Grid.Column="1"
+			VerticalAlignment="Center" 
+			HorizontalAlignment="Center">
+			<Image Width="100" Margin="0 20" Source="/Assets/no.png"/>
+			<TextBlock
+				FontSize="30"
+				FontWeight="Black"
+				Text="NO CUSTOMER SELECTED"
+				Foreground="{StaticResource HeaderTitleForegroundBrush}"/>
+		</StackPanel>
+		<Border
+			Grid.Column="1"
+			IsVisible="{Binding IsVisibleDetails}"
 			Margin="10"
 			Padding="10"
 			Background="{StaticResource ContainerBackgroundBrush}">

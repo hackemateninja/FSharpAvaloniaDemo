@@ -1,6 +1,5 @@
-﻿namespace ViewModels.CustomerItemViewModel
+﻿namespace AvaDemo.ViewModels
 
-open AvaDemo.ViewModels
 open AvaDemo.Model
 
 type CustomerItemViewModel(model: Customer) as x =
