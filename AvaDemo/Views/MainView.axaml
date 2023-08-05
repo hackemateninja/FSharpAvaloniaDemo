@@ -20,10 +20,10 @@
 		<!--Menu row 0-->
 		<Menu
 			Grid.Row="0" 
-			Background="Coral">
+			Background="{StaticResource MainContainerBackgroundBrush}">
 			<MenuItem 
 				Header="Pages" 
-				Foreground="Azure">
+				Foreground="{StaticResource MainContainerForegroundBrush}">
 				<MenuItem Header="Products" />
 				<MenuItem Header="Clients" />
 			</MenuItem>
@@ -38,9 +38,9 @@
 		<!--footer brand row 3-->
 		<StackPanel 
 			Grid.Row="3"
-			Background="Coral">
+			Background="{StaticResource MainContainerBackgroundBrush}">
 			<TextBlock
-				Foreground="Azure"
+				Foreground="{StaticResource MainContainerForegroundBrush}"
 				FontSize="16"
 				FontWeight="Bold"
 				Margin="0 5"

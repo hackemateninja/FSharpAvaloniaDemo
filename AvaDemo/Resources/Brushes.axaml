@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- Add Resources Here -->
+  <SolidColorBrush x:Key="ContainerBackgroundBrush" Color="Gainsboro"/>
+  <SolidColorBrush x:Key="MainContainerBackgroundBrush" Color="Coral" />
+  <SolidColorBrush x:Key="MainContainerForegroundBrush" Color="Azure" />
+  <SolidColorBrush x:Key="HeaderTitleForegroundBrush" Color="DarkGoldenrod" />
+  <SolidColorBrush x:Key="HeaderSubtitleForegroundBrush" Color="DarkOliveGreen" />
+</ResourceDictionary>

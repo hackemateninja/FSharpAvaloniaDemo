@@ -14,7 +14,7 @@
 			ColumnDefinitions="* * *"
 			RowDefinitions="Auto *"
 			Margin="10"
-			Background="Gainsboro">
+			Background="{StaticResource ContainerBackgroundBrush}">
 			<Button
 				Grid.Row="0"
 				Grid.Column="0"
@@ -34,19 +34,40 @@
 				Command="{Binding MovePanelCommand}"
 				Content="Move Panel"/>
 			<ListBox
+				x:Name="ListBoxCustomers"
 				ItemsSource="{Binding Customers}"
 				SelectedItem="{Binding SelectedCustomer}"
 				Grid.Row="1"
 				Grid.Column="0"
 				Grid.ColumnSpan="3"
-				DisplayMemberBinding="{Binding FirstName}"
-				Margin="10" />
+				Width="290"
+				Margin="10">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock 
+								VerticalAlignment="Center"
+								Foreground="{StaticResource HeaderTitleForegroundBrush}" 
+								Text="{Binding FirstName}" 
+								FontWeight="Bold"
+							/>
+							<TextBlock
+								VerticalAlignment="Center"
+								Foreground="{StaticResource HeaderSubtitleForegroundBrush}"
+								Text="{Binding LastName}"
+								Margin="5 0"
+							/>
+							<Image Source="/Assets/github.png" Width="20" IsVisible="{Binding IsNew}"/>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
 		</Grid>
     <Border
 			Grid.Column="1"
 			Margin="10"
 			Padding="10"
-			Background="Gainsboro">
+			Background="{StaticResource ContainerBackgroundBrush}">
       <StackPanel>
         <Label Content="Name: "/>
         <TextBox

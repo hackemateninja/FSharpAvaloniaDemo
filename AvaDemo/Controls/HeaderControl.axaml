@@ -9,7 +9,7 @@
   <Grid
     ColumnDefinitions="* Auto Auto *"
     RowDefinitions="* *"
-    Background="Gainsboro"
+    Background="{StaticResource ContainerBackgroundBrush}"
     Margin="10">
     <Image
       Grid.Row="0"
@@ -17,12 +17,11 @@
       Grid.RowSpan="2"
       Margin="10"
       Width="60"
-      Source="/Assets/coffee.png"
-			/>
+      Source="/Assets/coffee.png" />
     <TextBlock
       Grid.Column="2"
       Grid.Row="0"
-      Foreground="DarkGoldenrod"
+      Foreground="{StaticResource HeaderTitleForegroundBrush}"
       FontSize="20"
       Margin="0 8 0 0"
       FontWeight="Bold"
@@ -32,7 +31,7 @@
       Grid.Row="1"
       Grid.Column="2"
       TextAlignment="End"
-      Foreground="DarkOliveGreen"
+      Foreground="{StaticResource HeaderSubtitleForegroundBrush}"
       FontSize="18"
       Margin="0 0 0 8"
       FontWeight="Black"
