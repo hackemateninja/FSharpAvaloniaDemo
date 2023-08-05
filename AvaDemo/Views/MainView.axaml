@@ -5,16 +5,12 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:vm="clr-namespace:AvaDemo.ViewModels"
 	xmlns:controls="clr-namespace:AvaDemo.Controls"
-	xmlns:views="clr-namespace:AvaDemo.Views"
-  mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
   x:Class="AvaDemo.Views.MainView"
   x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
-         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.fs) -->
-    <vm:MainViewModel />
-  </Design.DataContext>
-	<!--Main Grid-->
+  <UserControl.DataContext>
+	  <vm:MainViewModel />
+  </UserControl.DataContext>
 	<Grid 
 		RowDefinitions="Auto Auto * Auto">
 		<!--Menu row 0-->
@@ -24,14 +20,14 @@
 			<MenuItem 
 				Header="Pages" 
 				Foreground="{StaticResource MainContainerForegroundBrush}">
-				<MenuItem Header="Products" />
-				<MenuItem Header="Clients" />
+				<MenuItem Header="Products" Command="{Binding ChangeViewCommand}" />
+				<MenuItem Header="Clients" Command="{Binding ChangeViewCommand}"/>
 			</MenuItem>
 		</Menu>
 		
 		<controls:HeaderControl Grid.Row="1"/>
 
-		<views:CustomersView Grid.Row="2" />
+		<ContentControl Grid.Row="2" Content="{Binding CurrentView}"/>
 		
 		<!--footer brand row 3-->
 		<StackPanel 
