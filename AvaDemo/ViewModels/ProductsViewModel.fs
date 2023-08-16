@@ -1,12 +1,13 @@
 ﻿namespace AvaDemo.ViewModels
 
 open AvaDemo.Services
+open AvaDemo.Model
 
 type ProductsViewModel() =
   inherit ViewModelBase()
   
   let mutable isLoaded = false
-  let mutable products = Unchecked.defaultof<ProductItemViewModel list>
+  let mutable products = Unchecked.defaultof<Product list>
   
   member x.IsLoaded
     with get() = isLoaded
@@ -26,7 +27,7 @@ type ProductsViewModel() =
         x.IsLoaded <- false
         let! prodService = ProductService.getProducts()
         for prod in prodService do
-          products <- ProductItemViewModel(prod) :: products
+          products <-  prod :: products
         x.IsLoaded <- true
       with
       | ex -> printfn "Error: %O" ex

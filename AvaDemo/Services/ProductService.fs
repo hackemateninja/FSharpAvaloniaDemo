@@ -6,16 +6,16 @@ module ProductService =
   let getProducts () =
     async{      
       return [
-        Product("001", "Product 1", "A fantastic product with amazing features.")
-        Product("002", "Product 2", "An innovative solution for your needs.")
-        Product("003", "Product 3", "The perfect choice to enhance your experience.")
-        Product("004", "Product 4", "Unleash the power of this cutting-edge product.")
-        Product("005", "Product 5", "Elevate your productivity with this product.")
-        Product("006", "Product 6", "Experience a new level of performance.")
-        Product("007", "Product 7", "A reliable companion for your tasks.")
-        Product("008", "Product 8", "Stay ahead with this advanced product.")
-        Product("009", "Product 9", "Transform your workflow with this tool.")
-        Product("010", "Product 10", "Efficiency meets style in this product.")
+        { Id = "001"; Name = "Customer 1"; Description = "A loyal customer with great feedback." }
+        { Id = "002"; Name = "Customer 2"; Description = "A valued customer who appreciates quality." }
+        { Id = "003"; Name = "Customer 3"; Description = "An enthusiastic customer who loves our products." }
+        { Id = "004"; Name = "Customer 4"; Description = "A satisfied customer who recommends us to others." }
+        { Id = "005"; Name = "Customer 5"; Description = "A repeat customer who trusts our services." }
+        { Id = "006"; Name = "Customer 6"; Description = "A dedicated customer who enjoys our offers." }
+        { Id = "007"; Name = "Customer 7"; Description = "A supportive customer who engages with us." }
+        { Id = "008"; Name = "Customer 8"; Description = "An engaged customer who provides valuable feedback." }
+        { Id = "009"; Name = "Customer 9"; Description = "A happy customer who spreads positive word-of-mouth." }
+        { Id = "010"; Name = "Customer 10"; Description = "An influential customer who is part of our community." }
       ]
     }
     

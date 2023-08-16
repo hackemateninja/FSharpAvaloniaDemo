@@ -21,7 +21,6 @@
     <Compile Include="ViewModels\ViewModelBase.fs" />
     <Compile Include="ViewModels\CustomerItemViewModel.fs" />
     <Compile Include="ViewModels\CustomersViewModel.fs" />
-    <Compile Include="ViewModels\ProductItemViewModel.fs" />
     <Compile Include="ViewModels\ProductsViewModel.fs" />
     <Compile Include="ViewModels\MainViewModel.fs" />
    
