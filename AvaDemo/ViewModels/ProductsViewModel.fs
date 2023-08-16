@@ -1,7 +1,33 @@
 ﻿namespace AvaDemo.ViewModels
 
-type ProductsViewModel() as x =
+open AvaDemo.Services
+
+type ProductsViewModel() =
   inherit ViewModelBase()
   
+  let mutable isLoaded = false
+  let mutable products = Unchecked.defaultof<ProductItemViewModel list>
   
-
+  member x.IsLoaded
+    with get() = isLoaded
+    and set (value: bool) =
+      isLoaded <- value
+      x.NotifyPropertyChanged() 
+  
+  member x.Products
+    with get() = products
+    and set value =
+      products <- value
+      x.NotifyPropertyChanged()
+      
+  member x.GetProductAsync() =
+    async {
+      try
+        x.IsLoaded <- false
+        let! prodService = ProductService.getProducts()
+        for prod in prodService do
+          products <- ProductItemViewModel(prod) :: products
+        x.IsLoaded <- true
+      with
+      | ex -> printfn "Error: %O" ex
+    }

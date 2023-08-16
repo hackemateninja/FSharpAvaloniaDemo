@@ -8,9 +8,6 @@
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
   x:Class="AvaDemo.Views.MainView"
   x:DataType="vm:MainViewModel">
-  <UserControl.DataContext>
-	  <vm:MainViewModel />
-  </UserControl.DataContext>
 	<Grid 
 		RowDefinitions="Auto Auto * Auto">
 		<!--Menu row 0-->
@@ -20,8 +17,8 @@
 			<MenuItem 
 				Header="Pages" 
 				Foreground="{StaticResource MainContainerForegroundBrush}">
-				<MenuItem Header="Products" Command="{Binding ChangeViewCommand}" />
-				<MenuItem Header="Clients" Command="{Binding ChangeViewCommand}"/>
+				<MenuItem Header="Products" Command="{Binding ChangeViewCommand}" CommandParameter="{Binding Products}" />
+				<MenuItem Header="Clients" Command="{Binding ChangeViewCommand}" CommandParameter="{Binding Customers}"/>
 			</MenuItem>
 		</Menu>
 		

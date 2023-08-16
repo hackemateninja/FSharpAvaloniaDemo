@@ -14,13 +14,17 @@
   <ItemGroup>
     <Compile Include="Command\DelegateCommand.fs" />
     <Compile Include="Model\Customer.fs" />
+    <Compile Include="Model\Product.fs" />
     <Compile Include="Services\CustomerService.fs" />
+    <Compile Include="Services\ProductService.fs" />
     <Compile Include="Controls\HeaderControl.axaml.fs" />
     <Compile Include="ViewModels\ViewModelBase.fs" />
     <Compile Include="ViewModels\CustomerItemViewModel.fs" />
     <Compile Include="ViewModels\CustomersViewModel.fs" />
+    <Compile Include="ViewModels\ProductItemViewModel.fs" />
     <Compile Include="ViewModels\ProductsViewModel.fs" />
     <Compile Include="ViewModels\MainViewModel.fs" />
+   
     <Compile Include="Views\ProductsView.axaml.fs" />
     <Compile Include="Views\CustomersView.axaml.fs" />
     <Compile Include="Views\MainWindow.axaml.fs" />
@@ -31,6 +35,7 @@
 
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->

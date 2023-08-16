@@ -7,11 +7,11 @@ type MainViewModel() as x =
 
   let mutable currentView = Unchecked.defaultof<ViewModelBase>
   
-  let customers = CustomersViewModel()
+  do currentView <- x.Customers
   
-  let products = ProductsViewModel()
-  
-  do currentView <- customers
+  member x.Customers = CustomersViewModel()
+    
+  member x.Products = ProductsViewModel()
 
   member x.ChangeViewCommand = DelegateCommand(x.ChangeView)
   
@@ -22,6 +22,6 @@ type MainViewModel() as x =
       x.NotifyPropertyChanged()
       x.ChangeViewCommand.RaiseCanExecuteChanged()
   
-  member private x.ChangeView(_parameter: obj) =
-    if x.CurrentView = customers then x.CurrentView <- products else x.CurrentView <- customers
-  
+  member private x.ChangeView(parameter: obj) =
+    x.CurrentView <- parameter :?> ViewModelBase
+    

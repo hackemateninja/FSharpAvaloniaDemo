@@ -13,9 +13,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia.iOS" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.0" />
+    <PackageReference Include="Avalonia.iOS" Version="11.0.0" />
     <ProjectReference Include="..\AvaDemo\AvaDemo.fsproj" />
-    <Compile Include="AppDelegate.fs"/>
-    <Compile Include="Main.fs"/>
+    <Compile Include="AppDelegate.fs" />
+    <Compile Include="Main.fs" />
   </ItemGroup>
 </Project>

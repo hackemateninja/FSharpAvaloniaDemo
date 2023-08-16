@@ -14,14 +14,8 @@ type CustomersView () as x =
 
   member private x.InitializeComponent() =
     AvaloniaXamlLoader.Load(x)
-    vm.GetCustomersAsync()|>Async.RunSynchronously
     x.DataContext <- vm
-
-  member x.MovePanelClick(sender: obj) (args: RoutedEventArgs) =
-    let listGrid = x.FindControl<Grid>("ListClientsGrid")
-    let column = Grid.GetColumn(listGrid)
-    let newCol = if column = 0 then 2 else 0
-    Grid.SetColumn(listGrid, newCol)
-    
-  member x.AddClientClick(sender: obj)(args: RoutedEventArgs) =
-    ()
+    x.Loaded.Add(x.ViewLoaded())
+     
+  member  x.ViewLoaded(sender: obj)(args: RoutedEventArgs) =
+    vm.GetCustomersAsync()|>Async.RunSynchronously

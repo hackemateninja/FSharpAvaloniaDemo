@@ -10,4 +10,6 @@ type MainView () as x =
 
   member private x.InitializeComponent() =
     AvaloniaXamlLoader.Load(x)
+  
+
 

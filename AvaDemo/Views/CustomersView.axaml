@@ -9,7 +9,7 @@
   x:DataType="vm:CustomersViewModel">
   <UserControl.Resources>
     <DataTemplate x:Key="CustomerItemTemplate" DataType="vm:CustomerItemViewModel">
-      <StackPanel Orientation="Horizontal">
+	    <StackPanel Orientation="Horizontal">
         <TextBlock
           VerticalAlignment="Center"
           Foreground="{StaticResource HeaderTitleForegroundBrush}"
@@ -30,7 +30,7 @@
 			Grid.Column="{Binding ColumnNumber}"
 			ColumnDefinitions="* * *"
 			RowDefinitions="Auto *"
-			Margin="10"
+			Margin="10 10 5 10"
 			Background="{StaticResource ContainerBackgroundBrush}">
 			<Button
 				Grid.Row="0"
@@ -50,16 +50,27 @@
 				Margin="5 10 10 0"
 				Command="{Binding MovePanelCommand}"
 				Content="Move Panel"/>
+			<ProgressBar
+				Grid.Row="1"
+				Grid.Column="0"
+				Grid.ColumnSpan="3"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center"
+				IsVisible="{Binding !IsLoaded}"
+				IsIndeterminate="True"
+				Foreground="{StaticResource MainContainerForegroundBrush}"
+				Background="{StaticResource MainContainerBackgroundBrush}"
+			/>
 			<ListBox
-				x:Name="ListBoxCustomers"
+				IsVisible="{Binding IsLoaded}"
 				ItemsSource="{Binding Customers}"
 				SelectedItem="{Binding SelectedCustomer}"
 				Grid.Row="1"
 				Grid.Column="0"
 				Grid.ColumnSpan="3"
 				Width="290"
-				ItemTemplate="{StaticResource CustomerItemTemplate}"
-				Margin="10"/>
+				Margin="10"
+				ItemTemplate="{StaticResource CustomerItemTemplate}"/>
 		</Grid>
 		<StackPanel
 			IsVisible="{Binding !IsVisibleDetails}"
@@ -76,7 +87,7 @@
 		<Border
 			Grid.Column="1"
 			IsVisible="{Binding IsVisibleDetails}"
-			Margin="10"
+			Margin="5 10 10 10"
 			Padding="10"
 			Background="{StaticResource ContainerBackgroundBrush}">
       <StackPanel>
