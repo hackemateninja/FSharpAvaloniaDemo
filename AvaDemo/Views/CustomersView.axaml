@@ -93,10 +93,12 @@
       <StackPanel>
         <Label Content="Name: "/>
         <TextBox
+	        Classes="custom"
 	        Text="{Binding SelectedCustomer.FirstName}"
         />
         <Label Content="Lastname: "/>
         <TextBox 
+	        Classes="custom"
 	        Text="{Binding SelectedCustomer.LastName}"
 	      />
         <CheckBox 

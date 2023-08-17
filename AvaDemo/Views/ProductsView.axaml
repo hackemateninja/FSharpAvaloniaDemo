@@ -13,7 +13,7 @@
       ItemsSource="{Binding Products}"        
       GridLinesVisibility="All"
       IsReadOnly="True"
-      BorderThickness="1" BorderBrush="Gray">
+      BorderThickness="1" BorderBrush="{StaticResource HeaderTitleForegroundBrush}">
       <DataGrid.Columns>
         <DataGridTextColumn Header="Id"  Binding="{Binding Id}"/>
         <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
