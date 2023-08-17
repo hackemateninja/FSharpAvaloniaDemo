@@ -3,7 +3,7 @@
 open AvaDemo.Model
 
 type CustomerItemViewModel(model: Customer) as x =
-  inherit ViewModelBase()
+  inherit ValidationViewModelBase()
 
   let mutable  _model = model
 
@@ -18,12 +18,20 @@ type CustomerItemViewModel(model: Customer) as x =
     and set value =
     _model.FirstName <- value
     x.NotifyPropertyChanged()
+    if model.FirstName.Length <= 0 then
+      x.AddError("Firstname is required", nameof(x.FirstName))
+    else
+      x.ClearErrors(nameof(x.FirstName))
 
   member x.LastName
     with get() = _model.LastName
     and set value =
     _model.LastName <- value
     x.NotifyPropertyChanged()
+    if model.LastName.Length <= 0 then
+      x.AddError("LastName is required", nameof(x.LastName))
+    else
+      x.ClearErrors(nameof(x.LastName))
 
   member x.IsNew
     with get() = _model.IsNew

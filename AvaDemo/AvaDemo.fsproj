@@ -19,11 +19,11 @@
     <Compile Include="Services\ProductService.fs" />
     <Compile Include="Controls\HeaderControl.axaml.fs" />
     <Compile Include="ViewModels\ViewModelBase.fs" />
+    <Compile Include="ViewModels\ValidationViewModelBase.fs" />
     <Compile Include="ViewModels\CustomerItemViewModel.fs" />
     <Compile Include="ViewModels\CustomersViewModel.fs" />
     <Compile Include="ViewModels\ProductsViewModel.fs" />
     <Compile Include="ViewModels\MainViewModel.fs" />
-   
     <Compile Include="Views\ProductsView.axaml.fs" />
     <Compile Include="Views\CustomersView.axaml.fs" />
     <Compile Include="Views\MainWindow.axaml.fs" />
