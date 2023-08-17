@@ -5,6 +5,7 @@ open AvaDemo.ViewModels
 open Avalonia.Controls
 open Avalonia.Interactivity
 open Avalonia.Markup.Xaml
+open Avalonia.Threading
 
 type ProductsView() as x =
   inherit UserControl()
@@ -17,8 +18,9 @@ type ProductsView() as x =
     AvaloniaXamlLoader.Load(x)
     x.DataContext <- vm
     x.Loaded.Add(x.ViewLoaded())
-    Debug.WriteLine vm.Products
     
   member  x.ViewLoaded(sender: obj)(args: RoutedEventArgs) =
-    vm.GetProductAsync()|>Async.RunSynchronously
+    Dispatcher.UIThread.InvokeAsync (fun () ->
+      vm.GetProductAsync()|>Async.RunSynchronously
+    ) |> ignore
 

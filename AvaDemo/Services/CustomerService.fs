@@ -5,7 +5,7 @@ open AvaDemo.Model
 module CustomerService =
   let getCustomers () =
     async{
- 
+      do! Async.Sleep(3000)
       return [
         Customer("1", "John", "Doe", true)
         Customer("2", "Jane", "Doe", false)

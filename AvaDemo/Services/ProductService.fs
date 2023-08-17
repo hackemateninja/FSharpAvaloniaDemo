@@ -4,7 +4,8 @@ open AvaDemo.Model
 
 module ProductService =
   let getProducts () =
-    async{      
+    async{
+      do! Async.Sleep(3000)
       return [
         { Id = "001"; Name = "Customer 1"; Description = "A loyal customer with great feedback." }
         { Id = "002"; Name = "Customer 2"; Description = "A valued customer who appreciates quality." }

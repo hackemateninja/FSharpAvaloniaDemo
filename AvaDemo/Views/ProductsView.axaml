@@ -8,7 +8,16 @@
   x:Class="AvaDemo.Views.ProductsView"
   x:DataType="vm:ProductsViewModel">
   <Grid>
+    <ProgressBar
+      VerticalAlignment="Center"
+      HorizontalAlignment="Center"
+      IsVisible="{Binding !IsLoaded}"
+      IsIndeterminate="True"
+      Foreground="{StaticResource MainContainerForegroundBrush}"
+      Background="{StaticResource MainContainerBackgroundBrush}"
+    />
     <DataGrid 
+      IsVisible="{Binding IsLoaded}"
       Margin="20" 
       ItemsSource="{Binding Products}"        
       GridLinesVisibility="All"
