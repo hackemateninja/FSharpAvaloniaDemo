@@ -21,10 +21,12 @@
       ItemsSource="{Binding Products}"        
       GridLinesVisibility="All"
       IsReadOnly="True"
-      BorderThickness="1" 
+      BorderThickness="1"
+      Foreground="{StaticResource MainContainerForegroundBrush}"
+      RowBackground="{StaticResource MainContainerBackgroundBrush}"
       BorderBrush="{StaticResource HeaderTitleForegroundBrush}">
       <DataGrid.Columns>
-        <DataGridTextColumn Header="Id"  Binding="{Binding Id}"/>
+        <DataGridTextColumn  Header="Id"  Binding="{Binding Id}"/>
         <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
         <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
       </DataGrid.Columns>

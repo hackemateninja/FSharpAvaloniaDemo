@@ -8,13 +8,13 @@ open Avalonia.Threading
 type CustomersView () as x = 
   inherit UserControl ()
   
-  let vm = CustomersViewModel()
+  let _vm = CustomersViewModel()
   
   do x.InitializeComponent()
 
   member private x.InitializeComponent() =
     AvaloniaXamlLoader.Load(x)
-    x.DataContext <- vm
+    x.DataContext <- _vm
     x.Loaded.Add(fun _ -> x.ViewLoaded())
      
   member x.ViewLoaded() =
@@ -26,7 +26,7 @@ type CustomersView () as x =
       ListBox.IsVisible <- false
       
       async {
-        do! vm.GetCustomersAsync()
+        do! _vm.GetCustomersAsync()
         
         Dispatcher.UIThread.Post(fun () ->
           progress.IsVisible <- false

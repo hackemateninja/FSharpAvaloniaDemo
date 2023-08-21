@@ -5,9 +5,9 @@ open AvaDemo.Command
 type MainViewModel() as x =
   inherit ViewModelBase()
 
-  let mutable currentView = Unchecked.defaultof<ViewModelBase>
+  let mutable _currentView = Unchecked.defaultof<ViewModelBase>
   
-  do currentView <- x.Customers
+  do _currentView <- x.Customers
   
   member x.Customers = CustomersViewModel()
     
@@ -16,9 +16,9 @@ type MainViewModel() as x =
   member x.ChangeViewCommand = DelegateCommand(x.ChangeView)
   
   member x.CurrentView
-    with get() = currentView
+    with get() = _currentView
     and set value =
-      currentView <- value
+      _currentView <- value
       x.NotifyPropertyChanged()
       x.ChangeViewCommand.RaiseCanExecuteChanged()
   

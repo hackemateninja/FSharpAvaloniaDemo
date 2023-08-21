@@ -8,13 +8,13 @@ open AvaDemo.Services
 type CustomersViewModel() =
   inherit ViewModelBase()
   
-  let defaultCustomer = Unchecked.defaultof<CustomerItemViewModel>
+  let _defaultCustomer = Unchecked.defaultof<CustomerItemViewModel>
   
-  let mutable customers = Unchecked.defaultof<CustomerItemViewModel list>
+  let mutable _customers = Unchecked.defaultof<CustomerItemViewModel list>
   
-  let mutable selectedCustomer = defaultCustomer
-  
-  let mutable columnNumber = 0
+  let mutable _selectedCustomer = _defaultCustomer
+ 
+  let mutable _columnNumber = 0
   
   member x.AddCommand = DelegateCommand x.AddCustomer
   
@@ -22,47 +22,47 @@ type CustomersViewModel() =
   
   member x.DeleteCommand = DelegateCommand(x.DeleteCustomer, x.CanDeleteCustomer)
   
-  member x.IsVisibleDetails = x.SelectedCustomer <> defaultCustomer
+  member x.IsVisibleDetails = x.SelectedCustomer <> _defaultCustomer
   
   member x.Customers
-    with get() = customers
+    with get() = _customers
     and set value = 
-    customers <- value
+    _customers <- value
     x.NotifyPropertyChanged()
     x.AddCommand.RaiseCanExecuteChanged()
 
   member x.SelectedCustomer
-    with get() = selectedCustomer
+    with get() = _selectedCustomer
     and set value = 
-    selectedCustomer <- value
+    _selectedCustomer <- value
     x.NotifyPropertyChanged()
     x.DeleteCommand.RaiseCanExecuteChanged()
 
   member x.ColumnNumber
-    with get() = columnNumber
+    with get() = _columnNumber
     and set value = 
-      columnNumber <- value
+      _columnNumber <- value
       x.NotifyPropertyChanged()
       x.MovePanelCommand.RaiseCanExecuteChanged()
           
   member x.GetCustomersAsync() =
     async {
       try
-        let! customersService = CustomerService.getCustomers()
-        for customer in customersService do
-          x.Customers <- CustomerItemViewModel(customer) :: customers
+        let! _customersService = CustomerService.getCustomers()
+        for customer in _customersService do
+          x.Customers <- CustomerItemViewModel(customer) :: _customers
       with
       | ex -> printfn "Error: %O" ex
     }
     
   member private x.AddCustomer(__parameter: obj) =
     let newCustomer = CustomerItemViewModel(Customer("", "New", "", true))
-    x.Customers  <- newCustomer :: customers
+    x.Customers  <- newCustomer :: _customers
     x.SelectedCustomer <- newCustomer
 
   member private x.DeleteCustomer(_parameter: obj) =
-    x.Customers <- x.Customers|>List.filter(fun x-> x <> selectedCustomer)
-    x.SelectedCustomer <- defaultCustomer
+    x.Customers <- x.Customers|>List.filter(fun x-> x <> _selectedCustomer)
+    x.SelectedCustomer <- _defaultCustomer
     
   member private x.CanDeleteCustomer(_parameter: obj) =
     x.IsVisibleDetails

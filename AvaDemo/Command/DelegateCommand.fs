@@ -9,7 +9,7 @@ type DelegateCommand(execute: obj -> unit, ?canExecute: obj -> bool) as x =
   
   let _canExecute = canExecute
   
-  let canExecuteChanged = Event<_, _>()
+  let _canExecuteChanged = Event<_, _>()
   
   member x.Execute parameter = _execute parameter
   
@@ -19,12 +19,12 @@ type DelegateCommand(execute: obj -> unit, ?canExecute: obj -> bool) as x =
     |None -> true
   
   member x.RaiseCanExecuteChanged() =
-    canExecuteChanged.Trigger(x, EventArgs.Empty)
+    _canExecuteChanged.Trigger(x, EventArgs.Empty)
       
   interface ICommand with
     [<CLIEvent>]
     
-    member x.CanExecuteChanged = canExecuteChanged.Publish
+    member x.CanExecuteChanged = _canExecuteChanged.Publish
     
     member x.CanExecute parameter = x.CanExecute parameter
     

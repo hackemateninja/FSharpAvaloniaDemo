@@ -10,13 +10,13 @@ open Avalonia.Threading
 type ProductsView() as x =
   inherit UserControl()
   
-  let vm = ProductsViewModel()
+  let _vm = ProductsViewModel()
   
   do x.InitializeComponent()
   
   member private x.InitializeComponent() =
     AvaloniaXamlLoader.Load(x)
-    x.DataContext <- vm
+    x.DataContext <- _vm
     x.Loaded.Add(fun _ -> x.ViewLoaded())
     
   member x.ViewLoaded() =
@@ -27,7 +27,7 @@ type ProductsView() as x =
       progress.IsVisible <- true
       dataGrid.IsVisible <- false
       async {
-        do! vm.GetProductAsync()
+        do! _vm.GetProductAsync()
         
         Dispatcher.UIThread.Post(fun () ->
           progress.IsVisible <- false
