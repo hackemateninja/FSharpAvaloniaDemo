@@ -20,5 +20,7 @@ run this commands inside the AvaDemo folder project
 `dotnet run`
 
 ## Demo
-[![Demo](/AvaDemo/Assets/preview.png)](/AvaDemo/Assets/demo.mp4)
+<video src="/AvaDemo/Assets/demo.mp4" autoplay poster="/AvaDemo/Assets/preview.png">
+  Tu navegador no admite el elemento <code>video</code>.
+</video>
 
