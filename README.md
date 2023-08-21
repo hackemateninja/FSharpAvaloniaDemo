@@ -20,5 +20,5 @@ run this commands inside the AvaDemo folder project
 `dotnet run`
 
 ## Demo
-[![Demo](/AvaDemo/Assets/preview.png)](/AvaDemo/Assets/preview.png)
+[![Demo](/AvaDemo/Assets/preview.png)](/AvaDemo/Assets/demo.mp4)
 
