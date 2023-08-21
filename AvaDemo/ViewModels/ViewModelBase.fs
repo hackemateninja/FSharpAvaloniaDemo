@@ -7,11 +7,11 @@ type ViewModelBase()  =
   
   interface INotifyPropertyChanged with
     [<CLIEvent>]
-    member this.PropertyChanged = propertyChanged.Publish
+    member x.PropertyChanged = propertyChanged.Publish
     
-  member this.NotifyPropertyChanged(?propertyName : string) =
+  member x.NotifyPropertyChanged(?propertyName : string) =
     let name = defaultArg propertyName "" 
-    propertyChanged.Trigger(this, PropertyChangedEventArgs(name))
+    propertyChanged.Trigger(x, PropertyChangedEventArgs(name))
 
 
   

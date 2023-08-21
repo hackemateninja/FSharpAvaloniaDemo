@@ -17,10 +17,22 @@ type ProductsView() as x =
   member private x.InitializeComponent() =
     AvaloniaXamlLoader.Load(x)
     x.DataContext <- vm
-    x.Loaded.Add(x.ViewLoaded())
+    x.Loaded.Add(fun _ -> x.ViewLoaded())
     
-  member  x.ViewLoaded(sender: obj)(args: RoutedEventArgs) =
-    Dispatcher.UIThread.InvokeAsync (fun () ->
-      vm.GetProductAsync()|>Async.RunSynchronously
-    ) |> ignore
+  member x.ViewLoaded() =
+    let longRunningTask () =
+      let progress = x.FindControl<ProgressBar>("ProgressBarLoading")
+      let dataGrid = x.FindControl<DataGrid>("DataGridProducts")
+      
+      progress.IsVisible <- true
+      dataGrid.IsVisible <- false
+      async {
+        do! vm.GetProductAsync()
+        
+        Dispatcher.UIThread.Post(fun () ->
+          progress.IsVisible <- false
+          dataGrid.IsVisible <- true
+        )
+      } |> Async.StartImmediate
 
+    Dispatcher.UIThread.Post(fun () -> longRunningTask())

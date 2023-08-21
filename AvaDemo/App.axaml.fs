@@ -9,11 +9,11 @@ open AvaDemo.Views
 type App() =
   inherit Application()
 
-  override this.Initialize() =
-    AvaloniaXamlLoader.Load(this)
+  override x.Initialize() =
+    AvaloniaXamlLoader.Load(x)
 
-  override this.OnFrameworkInitializationCompleted() =
-    match this.ApplicationLifetime with
+  override x.OnFrameworkInitializationCompleted() =
+    match x.ApplicationLifetime with
     | :? IClassicDesktopStyleApplicationLifetime as desktopLifetime ->
         desktopLifetime.MainWindow <- MainWindow(DataContext = MainViewModel())
     | :? ISingleViewApplicationLifetime as singleViewLifetime ->

@@ -3,7 +3,6 @@ namespace AvaDemo.Views
 open AvaDemo.ViewModels
 open Avalonia.Controls
 open Avalonia.Markup.Xaml
-open Avalonia.Interactivity
 open Avalonia.Threading
 
 type CustomersView () as x = 
@@ -19,6 +18,22 @@ type CustomersView () as x =
     x.Loaded.Add(fun _ -> x.ViewLoaded())
      
   member x.ViewLoaded() =
-    Dispatcher.UIThread.InvokeAsync (fun () ->
-      vm.GetCustomersAsync() |> Async.RunSynchronously
-    ) |> ignore
+    let longRunningTask () =
+      let progress = x.FindControl<ProgressBar>("ProgressBarLoading")
+      let ListBox = x.FindControl<ListBox>("ListBoxCustomers")
+      
+      progress.IsVisible <- true
+      ListBox.IsVisible <- false
+      
+      async {
+        do! vm.GetCustomersAsync()
+        
+        Dispatcher.UIThread.Post(fun () ->
+          progress.IsVisible <- false
+          ListBox.IsVisible <- true
+        )
+      } |> Async.StartImmediate
+
+    Dispatcher.UIThread.Post(fun () -> longRunningTask())
+    
+  

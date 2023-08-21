@@ -12,31 +12,31 @@ type ValidationViewModelBase () =
   
   interface INotifyDataErrorInfo with
     [<CLIEvent>]
-    member this.ErrorsChanged = errorsChanged.Publish
+    member x.ErrorsChanged = errorsChanged.Publish
     
-    member this.GetErrors(propertyName) =
+    member x.GetErrors(propertyName) =
       match errors.TryGetValue(propertyName) with
       | true, errs -> errs
       | _ -> []
       
-    member this.HasErrors = errors.Count > 0
+    member x.HasErrors = errors.Count > 0
     
-  member private this.OnErrorsChanged e =
-    errorsChanged.Trigger(this, e)
+  member private x.OnErrorsChanged e =
+    errorsChanged.Trigger(x, e)
     
-  member this.AddError(error: string, propertyName: string) =
+  member x.AddError(error: string, propertyName: string) =
     if not (errors.ContainsKey(propertyName)) then
       errors.[propertyName] <- List<string>()
     if not (errors[propertyName].Contains(error)) then
       errors.[propertyName].Add(error)
-      this.OnErrorsChanged(DataErrorsChangedEventArgs(propertyName))
-      this.NotifyPropertyChanged("HasErrors")
+      x.OnErrorsChanged(DataErrorsChangedEventArgs(propertyName))
+      x.NotifyPropertyChanged("HasErrors")
       
-  member this.ClearErrors(propertyName: string) =
+  member x.ClearErrors(propertyName: string) =
     if errors.ContainsKey(propertyName) then
       errors.Remove(propertyName) |> ignore
-      this.OnErrorsChanged(DataErrorsChangedEventArgs(propertyName))
-      this.NotifyPropertyChanged("HasErrors")
+      x.OnErrorsChanged(DataErrorsChangedEventArgs(propertyName))
+      x.NotifyPropertyChanged("HasErrors")
       
       
 

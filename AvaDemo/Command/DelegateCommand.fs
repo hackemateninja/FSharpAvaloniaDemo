@@ -18,7 +18,7 @@ type DelegateCommand(execute: obj -> unit, ?canExecute: obj -> bool) as x =
     |Some objectFunc -> objectFunc parameter
     |None -> true
   
-  member this.RaiseCanExecuteChanged() =
+  member x.RaiseCanExecuteChanged() =
     canExecuteChanged.Trigger(x, EventArgs.Empty)
       
   interface ICommand with

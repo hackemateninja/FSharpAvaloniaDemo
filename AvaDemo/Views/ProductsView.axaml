@@ -9,20 +9,20 @@
   x:DataType="vm:ProductsViewModel">
   <Grid>
     <ProgressBar
+      x:Name="ProgressBarLoading"
       VerticalAlignment="Center"
       HorizontalAlignment="Center"
-      IsVisible="{Binding !IsLoaded}"
       IsIndeterminate="True"
-      Foreground="{StaticResource MainContainerForegroundBrush}"
-      Background="{StaticResource MainContainerBackgroundBrush}"
+      Foreground="{StaticResource MainContainerBackgroundBrush}"
     />
     <DataGrid 
-      IsVisible="{Binding IsLoaded}"
+      x:Name="DataGridProducts"
       Margin="20" 
       ItemsSource="{Binding Products}"        
       GridLinesVisibility="All"
       IsReadOnly="True"
-      BorderThickness="1" BorderBrush="{StaticResource HeaderTitleForegroundBrush}">
+      BorderThickness="1" 
+      BorderBrush="{StaticResource HeaderTitleForegroundBrush}">
       <DataGrid.Columns>
         <DataGridTextColumn Header="Id"  Binding="{Binding Id}"/>
         <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>

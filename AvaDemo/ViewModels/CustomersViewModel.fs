@@ -10,8 +10,6 @@ type CustomersViewModel() =
   
   let defaultCustomer = Unchecked.defaultof<CustomerItemViewModel>
   
-  let mutable isLoaded = false
-  
   let mutable customers = Unchecked.defaultof<CustomerItemViewModel list>
   
   let mutable selectedCustomer = defaultCustomer
@@ -25,8 +23,6 @@ type CustomersViewModel() =
   member x.DeleteCommand = DelegateCommand(x.DeleteCustomer, x.CanDeleteCustomer)
   
   member x.IsVisibleDetails = x.SelectedCustomer <> defaultCustomer
-  
-  member x.IsCustomersLoaded = false
   
   member x.Customers
     with get() = customers
@@ -48,21 +44,13 @@ type CustomersViewModel() =
       columnNumber <- value
       x.NotifyPropertyChanged()
       x.MovePanelCommand.RaiseCanExecuteChanged()
-      
-  member x.IsLoaded
-    with get() = isLoaded
-    and set value=
-      isLoaded <- value
-      x.NotifyPropertyChanged()
           
   member x.GetCustomersAsync() =
     async {
       try
-        x.IsLoaded <- false
         let! customersService = CustomerService.getCustomers()
         for customer in customersService do
-          customers <- CustomerItemViewModel(customer) :: customers
-        x.IsLoaded <- true
+          x.Customers <- CustomerItemViewModel(customer) :: customers
       with
       | ex -> printfn "Error: %O" ex
     }

@@ -8,7 +8,7 @@ open AvaDemo.ViewModels
 type ViewLocator() =
   interface IDataTemplate with
         
-    member this.Build(data) =
+    member x.Build(data) =
       let name = data.GetType().FullName.Replace("ViewModel", "View")
       let typ = Type.GetType(name)
       if isNull typ then
@@ -16,4 +16,4 @@ type ViewLocator() =
       else
           downcast Activator.CreateInstance(typ)
 
-    member this.Match(data) = data :? ViewModelBase
+    member x.Match(data) = data :? ViewModelBase

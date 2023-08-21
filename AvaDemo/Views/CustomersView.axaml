@@ -51,18 +51,17 @@
 				Command="{Binding MovePanelCommand}"
 				Content="Move Panel"/>
 			<ProgressBar
+				x:Name="ProgressBarLoading"
 				Grid.Row="1"
 				Grid.Column="0"
 				Grid.ColumnSpan="3"
 				VerticalAlignment="Center"
 				HorizontalAlignment="Center"
-				IsVisible="{Binding !IsLoaded}"
 				IsIndeterminate="True"
-				Foreground="{StaticResource MainContainerForegroundBrush}"
-				Background="{StaticResource MainContainerBackgroundBrush}"
+				Foreground="{StaticResource MainContainerBackgroundBrush}"
 			/>
 			<ListBox
-				IsVisible="{Binding IsLoaded}"
+				x:Name="ListBoxCustomers"
 				ItemsSource="{Binding Customers}"
 				SelectedItem="{Binding SelectedCustomer}"
 				Grid.Row="1"
