@@ -1,5 +1,6 @@
 ﻿namespace AvaDemo.ViewModels
 
+open System.ComponentModel.DataAnnotations
 open AvaDemo.Model
 
 type CustomerItemViewModel(model: Customer) as x =
@@ -13,25 +14,20 @@ type CustomerItemViewModel(model: Customer) as x =
       _model.Id <- value
       x.NotifyPropertyChanged()
 
+  [<Required>]
   member x.FirstName
     with get() = _model.FirstName
     and set value =
     _model.FirstName <- value
     x.NotifyPropertyChanged()
-    if model.FirstName.Length <= 0 then
-      x.AddError("Firstname is required", nameof(x.FirstName))
-    else
-      x.ClearErrors(nameof(x.FirstName))
+    
 
+   [<Required>]
   member x.LastName
     with get() = _model.LastName
     and set value =
     _model.LastName <- value
     x.NotifyPropertyChanged()
-    if model.LastName.Length <= 0 then
-      x.AddError("LastName is required", nameof(x.LastName))
-    else
-      x.ClearErrors(nameof(x.LastName))
 
   member x.IsNew
     with get() = _model.IsNew
